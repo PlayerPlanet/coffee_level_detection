@@ -1,0 +1,22 @@
+[project]
+name = "coffee-level-detection"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Konsta Kiirikki",email = "konsta.kiirikki@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "transformers (>=4.55.0,<5.0.0)",
+    "opencv-python (>=4.12.0.88,<5.0.0.0)",
+    "streamlit (>=1.48.0,<2.0.0)",
+    "pillow (>=11.3.0,<12.0.0)",
+    "torch (>=2.8.0,<3.0.0)",
+    "scipy (>=1.16.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
