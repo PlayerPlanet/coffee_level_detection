@@ -1,2 +1,5 @@
 img/
 *.pyc
+masked_images/
+processed_images/
+manual_levels/
