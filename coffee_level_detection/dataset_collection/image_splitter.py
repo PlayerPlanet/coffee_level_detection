@@ -24,13 +24,10 @@ def process_images(input_folder, output_folder, image_extension):
 
             # Save split images
             cv2.imwrite(os.path.join(output_folder, f'left_{image_name}'), img_left)
-            cv2.imwrite(os.path.join(output_folder, f'right_{image_name}'), img_right)
 
             # Flip right image vertically
             img_right_flipped = cv2.flip(img_right, 1)
             cv2.imwrite(os.path.join(output_folder, f'right_flipped_{image_name}'), img_right_flipped)
-            img_left_flipped = cv2.flip(img_left, 1)  
-            cv2.imwrite(os.path.join(output_folder, f'left_flipped_{image_name}'), img_left_flipped)
 
 
     return transformed_images

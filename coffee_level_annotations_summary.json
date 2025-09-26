@@ -1,818 +1,216 @@
 {
-  "total_annotated": 200,
-  "session_timestamp": "2025-09-19T13:36:57.209460",
+  "total_annotated": 50,
+  "session_timestamp": "2025-09-26T14:19:43.325640",
   "level_distribution": {
-    "0": 130,
-    "3": 18,
-    "6": 5,
-    "5": 4,
-    "1": 17,
-    "2": 10,
-    "8": 5,
+    "0": 25,
+    "1": 6,
+    "5": 2,
+    "8": 3,
+    "3": 7,
     "4": 2,
-    "7": 6,
-    "9": 3
+    "6": 3,
+    "7": 2
   },
   "annotations": [
     {
-      "filename": "left_masked_photo_2019-06-19_15-10-42.jpg",
+      "filename": "right_flipped_masked_photo_2018-11-04_18-32-45.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_masked_photo_2024-11-28_10-35-48.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2019-03-26_10-24-09.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_masked_photo_2024-04-10_14-28-11.jpg",
-      "coffee_level": 6
-    },
-    {
-      "filename": "left_masked_photo_2023-01-30_20-10-44.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-10-30_11-08-23.jpg",
-      "coffee_level": 5
-    },
-    {
-      "filename": "left_masked_photo_2022-03-19_11-59-04.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2024-03-06_13-15-03.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-10-25_20-40-32.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-12-04_06-44-12.jpg",
+      "filename": "left_flipped_masked_photo_2022-01-31_13-05-10.jpg",
       "coffee_level": 1
     },
     {
-      "filename": "left_flipped_masked_photo_2018-02-27_20-11-38.jpg",
-      "coffee_level": 0
+      "filename": "left_flipped_masked_photo_2020-01-28_09-57-00.jpg",
+      "coffee_level": 1
     },
     {
-      "filename": "right_flipped_masked_photo_2024-04-24_07-57-35.jpg",
+      "filename": "right_masked_photo_2024-03-04_11-43-01.jpg",
       "coffee_level": 5
     },
     {
-      "filename": "left_flipped_masked_photo_2023-09-18_22-04-10.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2024-03-18_11-03-33.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2024-03-22_11-56-41.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-05-20_10-03-46.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-07-12_14-05-31.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-10-04_07-34-09.jpg",
+      "filename": "right_flipped_masked_photo_2024-11-29_09-25-01.jpg",
       "coffee_level": 8
     },
     {
-      "filename": "right_masked_photo_2022-11-14_15-56-30.jpg",
+      "filename": "left_masked_photo_2024-01-13_16-57-45.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_masked_photo_2022-03-22_15-14-38.jpg",
-      "coffee_level": 5
-    },
-    {
-      "filename": "right_masked_photo_2019-11-30_22-56-02.jpg",
+      "filename": "left_flipped_masked_photo_2019-12-02_22-45-45.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_masked_photo_2023-11-07_08-57-07.jpg",
+      "filename": "right_flipped_masked_photo_2018-02-18_19-58-38.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_flipped_masked_photo_2018-03-04_18-45-36.jpg",
-      "coffee_level": 2
+      "filename": "right_flipped_masked_photo_2019-09-11_12-56-12.jpg",
+      "coffee_level": 0
     },
     {
-      "filename": "right_flipped_masked_photo_2019-10-04_12-15-05.jpg",
+      "filename": "left_masked_photo_2023-11-19_05-49-06.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "left_masked_photo_2022-12-05_12-52-33.jpg",
       "coffee_level": 3
     },
     {
-      "filename": "right_flipped_masked_photo_2024-03-20_13-01-57.jpg",
+      "filename": "left_masked_photo_2018-04-12_10-22-11.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_flipped_masked_photo_2023-12-04_13-09-24.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "right_masked_photo_2022-03-03_16-03-36.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_masked_photo_2018-03-31_08-00-24.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2020-01-29_11-01-58.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-04-03_13-18-24.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-02-05_06-29-58.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2024-09-24_08-30-40.jpg",
-      "coffee_level": 6
-    },
-    {
-      "filename": "right_masked_photo_2024-04-11_08-23-46.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_flipped_masked_photo_2020-03-03_15-02-17.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-01-16_20-08-34.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-02-27_20-17-47.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2021-10-19_15-17-56.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-01-15_11-39-41.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-02-13_12-47-10.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-05-08_08-54-39.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-11-12_11-43-37.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2022-12-01_10-04-40.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-01-31_08-07-18.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2024-03-18_10-06-32.jpg",
+      "filename": "right_masked_photo_2019-09-16_11-00-11.jpg",
       "coffee_level": 4
     },
     {
-      "filename": "left_masked_photo_2019-03-26_06-04-32.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-02-28_08-46-46.jpg",
+      "filename": "right_flipped_masked_photo_2025-05-13_09-54-40.jpg",
       "coffee_level": 3
     },
     {
-      "filename": "left_flipped_masked_photo_2018-03-03_11-59-02.jpg",
+      "filename": "left_flipped_masked_photo_2024-03-19_13-26-23.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_flipped_masked_photo_2018-02-23_21-08-04.jpg",
+      "filename": "left_flipped_masked_photo_2022-04-05_10-54-00.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_masked_photo_2018-11-27_10-23-14.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_masked_photo_2022-04-23_20-13-07.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2024-04-05_10-11-55.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2022-01-07_14-47-34.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_masked_photo_2019-09-11_12-47-34.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-03-11_14-09-37.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_masked_photo_2022-02-08_17-51-36.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "left_masked_photo_2018-01-25_07-24-16.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2024-01-18_07-44-20.jpg",
-      "coffee_level": 9
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-06-26_08-35-08.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-10-07_09-04-22.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-10-03_09-20-30.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-01-19_10-00-40.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "left_masked_photo_2021-11-12_21-15-21.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-05-11_11-28-20.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2019-09-08_16-32-15.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2022-05-06_11-40-10.jpg",
-      "coffee_level": 6
-    },
-    {
-      "filename": "right_masked_photo_2022-05-17_08-01-30.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-09-07_10-40-22.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-04-26_07-08-48.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-03-04_18-43-29.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_masked_photo_2019-06-19_15-13-13.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-07-03_07-45-43.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-02-23_20-07-47.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-05-10_10-16-41.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_masked_photo_2024-01-28_10-30-00.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2022-05-13_10-12-30.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_masked_photo_2018-02-22_12-11-38.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2023-08-03_10-31-01.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2019-12-06_00-39-11.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-04-22_05-24-22.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-04-06_16-53-52.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-06-13_11-03-01.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-05-19_11-57-07.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-04-03_10-43-38.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2023-09-15_04-27-28.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2024-11-28_11-42-18.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_masked_photo_2021-10-21_22-33-22.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-11-20_14-21-00.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2024-11-20_12-08-24.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_masked_photo_2024-09-08_10-21-47.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2019-12-10_11-56-18.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-11-06_09-58-37.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-04-19_11-18-04.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-02-19_12-07-56.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-05-11_11-22-29.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2023-05-11_11-33-18.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-09-22_12-27-43.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2020-01-28_09-55-31.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2020-01-28_09-56-26.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2022-01-07_14-48-28.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-03-16_20-37-50.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-11-15_09-09-46.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2019-09-16_11-00-07.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_masked_photo_2025-05-13_08-04-48.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-03-08_16-49-05.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2020-01-28_09-57-20.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-01-23_02-30-23.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-03-28_07-41-40.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "right_flipped_masked_photo_2022-03-03_12-30-22.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-02-22_12-57-31.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_flipped_masked_photo_2021-10-29_13-25-42.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-09-27_09-03-30.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2024-01-18_09-01-07.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_flipped_masked_photo_2019-09-12_20-48-32.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2025-01-17_08-10-28.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2019-06-19_15-10-16.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-09-30_01-44-35.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-04-23_14-48-17.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-03-21_08-31-37.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2020-01-28_09-57-10.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_masked_photo_2024-02-27_08-08-19.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-09-28_09-05-30.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-10-19_11-13-08.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-03-20_08-54-13.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-12-10_11-01-15.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-10-23_07-09-47.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2018-01-18_10-20-49.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2018-03-04_18-44-55.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-04-25_17-00-42.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2025-05-09_09-55-29.jpg",
+      "filename": "left_flipped_masked_photo_2024-05-18_08-33-11.jpg",
       "coffee_level": 4
     },
     {
-      "filename": "right_masked_photo_2021-10-23_23-30-29.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-06-21_10-17-34.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-02-28_14-12-03.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2022-04-01_10-44-01.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-01-09_10-39-08.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "left_masked_photo_2022-03-08_16-48-46.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2022-01-18_09-43-10.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_masked_photo_2024-04-05_21-00-09.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2020-01-28_09-56-19.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-09-25_06-45-16.jpg",
-      "coffee_level": 7
-    },
-    {
-      "filename": "right_flipped_masked_photo_2021-11-01_17-45-19.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2021-12-24_21-12-56.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2021-10-21_22-35-37.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2019-09-11_10-32-39.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_masked_photo_2023-10-25_09-20-47.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "left_masked_photo_2019-04-23_07-09-11.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2019-12-02_22-46-52.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-11-08_09-36-41.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_masked_photo_2023-10-10_05-21-52.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-10-01_09-40-04.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "right_masked_photo_2024-10-01_07-42-32.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2019-12-10_18-21-04.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_flipped_masked_photo_2019-12-02_16-13-14.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-06-24_12-25-03.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-02-18_08-20-37.jpg",
-      "coffee_level": 8
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-01-21_07-24-55.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2023-09-25_08-07-12.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2022-03-24_00-34-34.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-03-26_19-26-42.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-11-01_06-22-27.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2021-11-10_12-34-23.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-02-18_08-20-27.jpg",
-      "coffee_level": 8
-    },
-    {
-      "filename": "left_masked_photo_2023-09-18_09-49-57.jpg",
-      "coffee_level": 9
-    },
-    {
-      "filename": "right_masked_photo_2023-02-03_13-11-26.jpg",
-      "coffee_level": 1
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-10-18_09-21-24.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2022-09-27_10-09-57.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-05-11_11-38-05.jpg",
-      "coffee_level": 2
-    },
-    {
-      "filename": "left_masked_photo_2022-11-30_09-00-16.jpg",
+      "filename": "right_masked_photo_2018-09-13_08-27-59.jpg",
       "coffee_level": 6
     },
     {
-      "filename": "left_flipped_masked_photo_2022-02-01_11-58-17.jpg",
+      "filename": "right_flipped_masked_photo_2018-03-29_06-37-59.jpg",
+      "coffee_level": 1
+    },
+    {
+      "filename": "right_masked_photo_2019-06-19_15-11-04.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_masked_photo_2024-09-05_09-00-25.jpg",
+      "filename": "right_masked_photo_2022-02-08_17-51-55.jpg",
+      "coffee_level": 8
+    },
+    {
+      "filename": "right_flipped_masked_photo_2024-09-09_09-06-41.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_flipped_masked_photo_2022-01-07_14-49-38.jpg",
-      "coffee_level": 0
+      "filename": "right_flipped_masked_photo_2022-04-18_11-44-13.jpg",
+      "coffee_level": 1
     },
     {
-      "filename": "right_flipped_masked_photo_2023-06-01_07-01-05.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2024-03-01_11-51-11.jpg",
+      "filename": "right_masked_photo_2024-10-25_07-07-46.jpg",
       "coffee_level": 3
     },
     {
-      "filename": "left_masked_photo_2022-09-28_05-52-20.jpg",
+      "filename": "left_masked_photo_2024-10-18_15-50-43.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_flipped_masked_photo_2023-09-14_10-09-29.jpg",
-      "coffee_level": 0
+      "filename": "right_flipped_masked_photo_2023-09-28_09-27-50.jpg",
+      "coffee_level": 7
     },
     {
-      "filename": "right_flipped_masked_photo_2024-09-12_12-08-13.jpg",
-      "coffee_level": 0
+      "filename": "left_masked_photo_2018-02-20_07-53-07.jpg",
+      "coffee_level": 1
     },
     {
-      "filename": "left_masked_photo_2018-10-17_17-16-09.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-05-11_11-27-30.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2023-10-18_09-35-40.jpg",
-      "coffee_level": 3
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-01-13_08-41-24.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-09-27_07-37-06.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-04-23_21-51-13.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-04-23_13-12-09.jpg",
+      "filename": "right_flipped_masked_photo_2024-01-28_10-37-53.jpg",
       "coffee_level": 5
     },
     {
-      "filename": "right_masked_photo_2025-09-03_09-30-14.jpg",
+      "filename": "left_masked_photo_2018-02-02_08-46-39.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_masked_photo_2019-01-25_07-02-25.jpg",
+      "filename": "right_flipped_masked_photo_2018-03-05_11-07-48.jpg",
+      "coffee_level": 1
+    },
+    {
+      "filename": "left_masked_photo_2021-11-23_18-08-11.jpg",
       "coffee_level": 6
     },
     {
-      "filename": "right_flipped_masked_photo_2018-02-28_11-31-50.jpg",
-      "coffee_level": 2
+      "filename": "right_masked_photo_2022-03-03_16-03-54.jpg",
+      "coffee_level": 0
     },
     {
-      "filename": "right_masked_photo_2019-10-04_12-14-30.jpg",
+      "filename": "right_flipped_masked_photo_2018-02-01_17-47-10.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "right_masked_photo_2020-02-07_10-03-18.jpg",
+      "coffee_level": 7
+    },
+    {
+      "filename": "left_masked_photo_2022-12-26_12-32-13.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "right_flipped_masked_photo_2019-10-04_12-15-03.jpg",
       "coffee_level": 3
     },
     {
-      "filename": "left_flipped_masked_photo_2023-08-02_10-46-43.jpg",
+      "filename": "right_masked_photo_2024-03-04_19-24-08.jpg",
+      "coffee_level": 3
+    },
+    {
+      "filename": "left_flipped_masked_photo_2018-01-19_10-00-13.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "right_flipped_masked_photo_2022-10-28_21-36-44.jpg",
+      "filename": "right_masked_photo_2018-01-16_07-03-09.jpg",
+      "coffee_level": 6
+    },
+    {
+      "filename": "left_flipped_masked_photo_2022-10-06_06-50-43.jpg",
+      "coffee_level": 3
+    },
+    {
+      "filename": "right_flipped_masked_photo_2018-02-18_20-01-04.jpg",
       "coffee_level": 0
     },
     {
-      "filename": "left_masked_photo_2023-12-19_10-19-53.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-11-25_19-19-42.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_flipped_masked_photo_2023-11-01_06-22-27.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_flipped_masked_photo_2024-10-02_09-10-32.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-10-02_09-33-38.jpg",
-      "coffee_level": 9
-    },
-    {
-      "filename": "right_flipped_masked_photo_2018-02-18_19-59-47.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2020-01-12_22-09-28.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2023-10-08_19-42-38.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2022-03-08_16-48-55.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "left_masked_photo_2025-01-31_08-01-40.jpg",
-      "coffee_level": 0
-    },
-    {
-      "filename": "right_masked_photo_2018-04-03_08-26-16.jpg",
+      "filename": "right_masked_photo_2020-01-28_09-55-08.jpg",
       "coffee_level": 8
     },
     {
-      "filename": "right_flipped_masked_photo_2022-02-28_11-35-12.jpg",
-      "coffee_level": 8
+      "filename": "left_flipped_masked_photo_2023-04-04_07-45-58.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "left_flipped_masked_photo_2023-10-13_13-18-45.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "right_flipped_masked_photo_2024-09-03_06-52-11.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "right_flipped_masked_photo_2022-09-09_08-07-51.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "left_flipped_masked_photo_2022-03-18_12-07-13.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "left_masked_photo_2018-01-16_15-58-19.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "left_flipped_masked_photo_2023-11-22_13-27-11.jpg",
+      "coffee_level": 0
+    },
+    {
+      "filename": "right_masked_photo_2024-11-25_08-09-10.jpg",
+      "coffee_level": 3
     }
   ]
 }

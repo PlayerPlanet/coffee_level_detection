@@ -118,10 +118,13 @@ All modules support `python -m` execution:
 - Summary file provides session overview and level distribution statistics
 - Image formats: `.jpg`, `.png` (case-insensitive)
 
-## Code Style Notes
+## Code Style & Documentation Notes
 - Import grouping: standard library, third-party, local modules
-- Uses f-strings for formatting
+- Use f-strings for formatting
 - Prefer `os.path.join()` for cross-platform paths
 - Interactive tools use matplotlib with keyboard event handling
 - Command-line interfaces use argparse with sensible defaults
 - JSON files for structured data storage with timestamps and metadata
+- **All functions, classes, and modules must include clear, concise docstrings** (Google or NumPy style recommended)
+- **README.md must be professional, with project overview, setup, usage, and architecture details**
+- **Modules should include top-level docstrings describing their purpose and usage**

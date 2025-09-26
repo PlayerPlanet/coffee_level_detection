@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Coffee Level Detection"
+abstract: "A computer vision project for detecting coffee levels in images using manual annotation and machine learning. The project implements a complete pipeline from raw images to trained models for coffee cup counting (0-10 cups) with interactive annotation tools and automated image preprocessing."
+authors:
+  - family-names: "Kiirikki"
+    given-names: "Konsta"
+    email: "konsta.kiirikki@aalto.fi"
+repository-code: "https://github.com/PlayerPlanet/coffee_level_detection"
+url: "https://github.com/PlayerPlanet/coffee_level_detection"
+license: MIT
+version: "1.0.0"
+date-released: "2025-09-19"
+keywords:
+  - "computer vision"
+  - "machine learning"
+  - "image classification"
+  - "coffee detection"
+  - "manual annotation"
+  - "PCA"
+  - "image processing"
+  - "dataset collection"
+preferred-citation:
+  type: software
+  title: "Coffee Level Detection: A Computer Vision Pipeline for Coffee Counting"
+  authors:
+    - family-names: "Kiirikki"
+      given-names: "Konsta"
+  year: 2025
+  url: "https://github.com/PlayerPlanet/coffee_level_detection"
+  version: "1.0.0"
