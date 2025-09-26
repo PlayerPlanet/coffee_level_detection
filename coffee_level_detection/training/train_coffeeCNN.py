@@ -130,7 +130,7 @@ def __load_dataset(dataset_path, img_path):
     with open(dataset_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     df = pd.json_normalize(data["annotation_data"])
-    df.dropna(subset=['coffee_level'])
+    df = df.dropna(subset=['coffee_level'])
     dataset = CoffeeImageDataset(df, img_path)
     return dataset
 
