@@ -20,12 +20,12 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     model = coffeeCNN(num_classes=11).to(device)
     weights = __weights(dataset.df['coffee_level'].values)
     criterion = torch.nn.CrossEntropyLoss(weight=weights.to(device))  # class balancing
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     train_loader, val_loader = __handle_dataset(dataset, 0.8, 0.2)
     
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
-
+    torch.save(model, "coffeeCNN")
     #eval
     __eval_loop(model, val_loader)
     
@@ -130,6 +130,7 @@ def __load_dataset(dataset_path, img_path):
     with open(dataset_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     df = pd.json_normalize(data["annotation_data"])
+    df.dropna(subset=['coffee_level'])
     dataset = CoffeeImageDataset(df, img_path)
     return dataset
 
