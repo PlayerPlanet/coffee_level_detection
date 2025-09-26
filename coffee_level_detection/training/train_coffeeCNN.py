@@ -18,10 +18,10 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = coffeeCNN(num_classes=11).to(device)
-    weights = __weights(dataset.df['coffee_level'].values)
-    criterion = torch.nn.CrossEntropyLoss(weight=weights.to(device))  # class balancing
+    train_loader, val_loader = __handle_dataset(dataset, 0.8, 0.2, batch_size)
+    # weights = __weights(dataset.df['coffee_level'].values)
+    criterion = torch.nn.CrossEntropyLoss()  # class balancing
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-    train_loader, val_loader = __handle_dataset(dataset, 0.8, 0.2)
     
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
@@ -101,7 +101,7 @@ def __weights(y: np.ndarray):
     class_weights = dict(zip(classes, class_weights))
     return torch.tensor(list(class_weights.values()), dtype=torch.float)
 
-def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size):
+def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_size):
     """
     Split dataset into training and validation sets and create DataLoaders.
     Args:
@@ -114,7 +114,15 @@ def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size):
     train_dataset, val_dataset = torch.utils.data.random_split(
     dataset, [train_size, val_size]
     )
-    train_loader = torch.utils.data.DataLoader(train_dataset)
+
+    labels = dataset.df['coffee_level'].values
+    class_sample_count = np.array([len(np.where(labels == t)[0]) for t in np.unique(labels)])
+    weight = 1. / class_sample_count
+    weights = np.array([weight[t] for t in labels])
+
+    sampler = torch.utils.data.WeightedRandomSampler(weights, len(weights))
+
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
     val_loader = torch.utils.data.DataLoader(val_dataset)
     return train_loader, val_loader
 
