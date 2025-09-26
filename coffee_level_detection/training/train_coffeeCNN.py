@@ -142,8 +142,9 @@ def main():
     parser.add_argument("--f", type=str, default="compiled_coffee_level_annotations.json")
     parser.add_argument("--batch", type=int, default="10")
     parser.add_argument("--epochs",type=int, default="10")
-    parser.add_argument("--checkpoint", type=str, default="coffeeCNN_checkpoint")
+    parser.add_argument("--checkpoint", type=int, default="5")
     parser.add_argument("--img_dir", type=str, default="processed_images")
+    parser.add_argument("--checkpoint_dir",type=str, default="checkpoint")
     
     args = parser.parse_args()
 
