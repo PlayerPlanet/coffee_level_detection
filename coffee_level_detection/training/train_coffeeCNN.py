@@ -99,7 +99,7 @@ def __weights(y: np.ndarray):
     classes = np.arange(11)
     class_weights = compute_class_weight('balanced', classes=classes, y=y)
     class_weights = dict(zip(classes, class_weights))
-    return torch.tensor(class_weights, dtype=torch.float)
+    return torch.tensor(list(class_weights.values()), dtype=torch.float)
 
 def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size):
     """
