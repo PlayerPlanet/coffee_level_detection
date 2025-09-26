@@ -18,7 +18,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = coffeeCNN(num_classes=11).to(device)
-    weights = __weights(dataset['coffee_level'].values)
+    weights = __weights(dataset.df['coffee_level'].values)
     criterion = torch.nn.CrossEntropyLoss(weight=weights.to(device))  # class balancing
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     train_loader, val_loader = __handle_dataset(dataset, 0.8, 0.2)
