@@ -116,9 +116,18 @@ def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_si
     train_dataset, val_dataset = torch.utils.data.random_split(
     dataset, [train_size, val_size]
     )
+    
+    train_indices = train_dataset.indices if hasattr(train_dataset, "indices") else train_dataset._indices
+    train_labels = dataset.df.iloc[train_indices]['coffee_level'].values
 
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size)
-    val_loader = torch.utils.data.DataLoader(val_dataset)
+    class_sample_count = np.array([len(np.where(train_labels == t)[0]) for t in np.unique(train_labels)])
+    weight = 1. / class_sample_count
+    weights = np.array([weight[t] for t in train_labels])
+
+    sampler = torch.utils.data.WeightedRandomSampler(weights, len(weights))
+
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
+    val_loader = torch.utils.data.DataLoader(val_dataset,batch_size=batch_size, shuffle=False)
     return train_loader, val_loader
 
 def __load_dataset(dataset_path, img_path):
