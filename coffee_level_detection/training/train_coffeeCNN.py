@@ -118,7 +118,7 @@ def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_si
     )
     
     train_indices = train_dataset.indices if hasattr(train_dataset, "indices") else train_dataset._indices
-    train_labels = dataset.df.iloc[train_indices]['coffee_level'].values
+    train_labels = dataset.df.iloc[train_indices]['coffee_level'].values.astype(int)
 
     class_sample_count = np.array([len(np.where(train_labels == t)[0]) for t in np.unique(train_labels)])
     weight = 1. / class_sample_count
