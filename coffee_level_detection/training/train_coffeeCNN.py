@@ -97,9 +97,11 @@ def __weights(y: np.ndarray):
         torch.Tensor: Tensor of class weights.
     """
     classes = np.arange(11)
-    class_weights = compute_class_weight('balanced', classes=classes, y=y)
-    class_weights = dict(zip(classes, class_weights))
-    return torch.tensor(list(class_weights.values()), dtype=torch.float)
+    raw_weights = compute_class_weight('balanced', classes=classes, y=y)
+    weights = torch.sqrt(raw_weights)
+    weights = weights / weights.mean()
+    class_weights = torch.clamp(weights, min=0.5, max=5.0)
+    return class_weights
 
 def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_size):
     """
@@ -115,14 +117,7 @@ def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_si
     dataset, [train_size, val_size]
     )
 
-    labels = dataset.df['coffee_level'].values
-    class_sample_count = np.array([len(np.where(labels == t)[0]) for t in np.unique(labels)])
-    weight = 1. / class_sample_count
-    weights = np.array([weight[t] for t in labels])
-
-    sampler = torch.utils.data.WeightedRandomSampler(weights, len(weights))
-
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size)
     val_loader = torch.utils.data.DataLoader(val_dataset)
     return train_loader, val_loader
 
