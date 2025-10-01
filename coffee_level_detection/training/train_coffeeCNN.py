@@ -27,7 +27,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
     torch.save(model.state_dict(), "coffeeCNN.pth")
     #eval
-    __eval_loop(model, val_loader)
+    __eval_loop(model, val_loader, device)
     
     
 def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, epochs, checkpoint):
@@ -71,7 +71,7 @@ def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, e
         epoch_bar.set_postfix(epoch_loss=f"{avg_loss:.4f}")
         print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
 
-def __eval_loop(model, val_loader):
+def __eval_loop(model, val_loader, device):
     """
     Internal evaluation loop for coffeeCNN.
     Args:
@@ -84,6 +84,7 @@ def __eval_loop(model, val_loader):
     correct, total = 0, 0
     with torch.no_grad():
         for inputs, labels in val_loader:
+            inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
             _, preds = torch.max(outputs, 1)
             correct += (preds == labels).sum().item()
