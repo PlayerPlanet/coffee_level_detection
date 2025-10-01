@@ -25,7 +25,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
-    torch.save(model, "coffeeCNN.pth")
+    torch.save(model.state_dict(), "coffeeCNN.pth")
     #eval
     __eval_loop(model, val_loader)
     
