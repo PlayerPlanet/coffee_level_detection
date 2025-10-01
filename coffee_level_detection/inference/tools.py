@@ -10,7 +10,12 @@ def load_model(model_path="coffeeCNN.pth", device=None):
 	if device is None:
 		device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 	model = coffeeCNN(num_classes=11).to(device)
-	model.load_state_dict(torch.load(model_path, map_location=device))
+	try:
+		# Try weights_only=True (PyTorch 2.6+ default)
+		model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
+	except Exception as e:
+		print(f"Warning: weights_only=True failed ({e}). Trying weights_only=False for legacy compatibility.")
+		model.load_state_dict(torch.load(model_path, map_location=device, weights_only=False))
 	model.eval()
 	return model
 
