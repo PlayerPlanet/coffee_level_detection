@@ -25,7 +25,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
-    torch.save(model, "coffeeCNN")
+    torch.save(model, "coffeeCNN.pth")
     #eval
     __eval_loop(model, val_loader)
     
@@ -61,7 +61,11 @@ def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, e
             running_loss += batch_loss * (labels.size(0) if hasattr(labels, "size") else 1)
             batch_bar.set_postfix(loss=f"{batch_loss:.4f}")
         if (i+1)%checkpoint == 0:
-            torch.save(model, f"checkpoint")
+            torch.save({
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'epoch': epoch
+            }, "checkpoint.pth.tar")
         # compute epoch average loss and show on epoch bar
         avg_loss = running_loss / total_samples if total_samples > 0 else running_loss / max(len(train_loader), 1)
         epoch_bar.set_postfix(epoch_loss=f"{avg_loss:.4f}")
