@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, checkpoint: int = 5, use_sampler=False):
+def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, checkpoint: int = 5, use_sampler=False, num_classes: int = 11):
     """
     Train a coffeeCNN model on the provided CoffeeImageDataset.
     Args:
@@ -14,18 +14,18 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
         batch_size (int): Batch size for training.
         epochs (int): Number of training epochs.
         checkpoint (int): Checkpoint interval for saving the model.
+        num_classes (int): Number of output classes.
     """
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = coffeeCNN(num_classes=11).to(device)
+    model = coffeeCNN(num_classes=num_classes).to(device)
     train_loader, val_loader = __handle_dataset(dataset, 0.9, 0.1, batch_size ,use_sampler=use_sampler)
     if not use_sampler:
-        weights = __weights(dataset.df['coffee_level'].values)
+        weights = __weights(dataset.df['coffee_level'].values, num_classes)
     else:
         weights = None
     criterion = torch.nn.CrossEntropyLoss(weight=weights)  # class balancing
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-    
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
     torch.save(model.state_dict(), "coffeeCNN.pth")
@@ -96,15 +96,16 @@ def __eval_loop(model, val_loader, device):
     print(f"accuracy: {correct/total}")
     return correct, total
 
-def __weights(y: np.ndarray):
+def __weights(y: np.ndarray, num_classes: int):
     """
     Compute class weights for balancing the loss function.
     Args:
         y (np.ndarray): Array of class labels.
+        num_classes (int): Number of output classes.
     Returns:
         torch.Tensor: Tensor of class weights.
     """
-    classes = np.arange(11)
+    classes = np.arange(num_classes)
     raw_weights = compute_class_weight('balanced', classes=classes, y=y)
     weights = torch.sqrt(raw_weights)
     weights = weights / weights.mean()
@@ -162,18 +163,18 @@ def main():
     Main entry point for training coffeeCNN from command line arguments.
     """
     parser = argparse.ArgumentParser()
-
     parser.add_argument("--f", type=str, default="compiled_coffee_level_annotations.json")
-    parser.add_argument("--batch", type=int, default="10")
-    parser.add_argument("--epochs",type=int, default="10")
-    parser.add_argument("--checkpoint", type=int, default="5")
+    parser.add_argument("--batch", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--checkpoint", type=int, default=5)
     parser.add_argument("--img_dir", type=str, default="processed_images")
-    parser.add_argument("--checkpoint_dir",type=str, default="checkpoint")
-    parser.add_argument("--use_sampler",type=bool, default="False")
+    parser.add_argument("--checkpoint_dir", type=str, default="checkpoint")
+    parser.add_argument("--use_sampler", type=bool, default=False)
+    parser.add_argument("--num_classes", type=int, default=11, help="Number of output classes")
     args = parser.parse_args()
 
     dataset = __load_dataset(args.f, args.img_dir)
-    train(dataset, args.batch, args.epochs, args.checkpoint, args.use_sampler)
+    train(dataset, args.batch, args.epochs, args.checkpoint, args.use_sampler, args.num_classes)
 
 if __name__=="__main__":
     main()
