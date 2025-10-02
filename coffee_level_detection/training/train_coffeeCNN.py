@@ -21,7 +21,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     model = coffeeCNN(num_classes=num_classes).to(device)
     train_loader, val_loader = __handle_dataset(dataset, 0.9, 0.1, batch_size ,use_sampler=use_sampler)
     if not use_sampler:
-        weights = __weights(dataset.df['coffee_level'].values, num_classes)
+        weights = __weights(dataset.df['coffee_level'].values, num_classes, device)
     else:
         weights = None
     criterion = torch.nn.CrossEntropyLoss(weight=weights)  # class balancing
@@ -96,7 +96,7 @@ def __eval_loop(model, val_loader, device):
     print(f"accuracy: {correct/total}")
     return correct, total
 
-def __weights(y: np.ndarray, num_classes: int):
+def __weights(y: np.ndarray, num_classes: int, device):
     """
     Compute class weights for balancing the loss function.
     Args:
@@ -107,7 +107,7 @@ def __weights(y: np.ndarray, num_classes: int):
     """
     classes = np.arange(num_classes)
     raw_weights = compute_class_weight('balanced', classes=classes, y=y)
-    weights = torch.sqrt(torch.tensor(raw_weights, dtype=torch.float32))
+    weights = torch.sqrt(torch.tensor(raw_weights, dtype=torch.float32)).to(device)
     weights = weights / weights.mean()
     class_weights = torch.clamp(weights, min=0.5, max=5.0)
     return class_weights
