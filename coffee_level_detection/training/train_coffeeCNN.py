@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, checkpoint: int = 5):
+def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, checkpoint: int = 5, use_sampler=False):
     """
     Train a coffeeCNN model on the provided CoffeeImageDataset.
     Args:
@@ -18,9 +18,12 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = coffeeCNN(num_classes=11).to(device)
-    train_loader, val_loader = __handle_dataset(dataset, 0.8, 0.2, batch_size)
-    # weights = __weights(dataset.df['coffee_level'].values)
-    criterion = torch.nn.CrossEntropyLoss()  # class balancing
+    train_loader, val_loader = __handle_dataset(dataset, 0.9, 0.1, batch_size ,use_sampler=use_sampler)
+    if not use_sampler:
+        weights = __weights(dataset.df['coffee_level'].values)
+    else:
+        weights = None
+    criterion = torch.nn.CrossEntropyLoss(weight=weights)  # class balancing
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     
     #train
@@ -108,7 +111,7 @@ def __weights(y: np.ndarray):
     class_weights = torch.clamp(weights, min=0.5, max=5.0)
     return class_weights
 
-def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_size):
+def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_size, use_sampler=False):
     """
     Split dataset into training and validation sets and create DataLoaders.
     Args:
@@ -130,8 +133,11 @@ def __handle_dataset(dataset: CoffeeImageDataset, train_size, val_size, batch_si
     weights = np.array([weight[t] for t in train_labels])
 
     sampler = torch.utils.data.WeightedRandomSampler(weights, len(weights))
-
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
+    if use_sampler:
+        train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
+    else:
+        train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size)
+    
     val_loader = torch.utils.data.DataLoader(val_dataset,batch_size=batch_size, shuffle=False)
     return train_loader, val_loader
 
@@ -163,11 +169,11 @@ def main():
     parser.add_argument("--checkpoint", type=int, default="5")
     parser.add_argument("--img_dir", type=str, default="processed_images")
     parser.add_argument("--checkpoint_dir",type=str, default="checkpoint")
-    
+    parser.add_argument("--use_sampler",type=bool, default="False")
     args = parser.parse_args()
 
     dataset = __load_dataset(args.f, args.img_dir)
-    train(dataset, args.batch, args.epochs, args.checkpoint)
+    train(dataset, args.batch, args.epochs, args.checkpoint, args.use_sampler)
 
 if __name__=="__main__":
     main()
