@@ -107,7 +107,7 @@ def __weights(y: np.ndarray, num_classes: int):
     """
     classes = np.arange(num_classes)
     raw_weights = compute_class_weight('balanced', classes=classes, y=y)
-    weights = torch.sqrt(raw_weights)
+    weights = torch.sqrt(torch.tensor(raw_weights, dtype=torch.float32))
     weights = weights / weights.mean()
     class_weights = torch.clamp(weights, min=0.5, max=5.0)
     return class_weights
