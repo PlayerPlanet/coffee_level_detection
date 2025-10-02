@@ -5,10 +5,12 @@ import cv2
 import numpy as np
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
+
 class annotation(BaseModel):
     filename: str
-    coffee_level: int
-    timestamp: datetime
+    coffee_level: Optional[int]
+    timestamp: str
     annotator: str
     version: str
     

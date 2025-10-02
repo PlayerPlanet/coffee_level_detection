@@ -135,8 +135,7 @@ def main():
             '--output', output_model,
             '--epochs', str(args.epochs),
             '--lr', str(args.lr),
-            '--early-stopping', str(args.early_stopping),
-            '--no-freeze'
+            '--early-stopping', str(args.early_stopping)
         ]
         
         if not run_command(finetune_cmd, "Model fine-tuning"):

@@ -58,11 +58,16 @@ def predict_coffee_level(model, img_tensor, device=None):
 	img_tensor = img_tensor.to(device)
 	with torch.no_grad():
 		outputs = model(img_tensor)
-		_, preds = torch.max(outputs, 1)
-		preds = preds.cpu().numpy().tolist()
-		if len(preds) == 1:
-			return int(preds[0])
-		return preds
+		probabilities = torch.nn.functional.softmax(outputs, dim=1)
+		confidence, predicted_class = torch.max(probabilities, 1)
+		confidence_score = confidence.item()
+		prob_dist = probabilities.squeeze().cpu().numpy().tolist()
+		preds = predicted_class.cpu().numpy().tolist()
+		return {
+			"prob": prob_dist,
+			"conf": confidence_score,
+			"preds": preds,
+		}
 
 def infer_coffee_level(img_path, model=None, device=None):
 	"""
