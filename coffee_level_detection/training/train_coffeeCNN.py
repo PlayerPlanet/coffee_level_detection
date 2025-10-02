@@ -17,7 +17,17 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
         num_classes (int): Number of output classes.
     """
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # Device selection with Intel XPU support
+    if torch.xpu.is_available():
+        device = torch.device("xpu")
+        print(f"Using device: {device} (Intel XPU)")
+    elif torch.cuda.is_available():
+        device = torch.device("cuda")
+        print(f"Using device: {device} (NVIDIA GPU)")
+    else:
+        device = torch.device("cpu")
+        print(f"Using device: {device} (CPU)")
+        
     model = coffeeCNN(num_classes=num_classes).to(device)
     train_loader, val_loader = __handle_dataset(dataset, 0.9, 0.1, batch_size ,use_sampler=use_sampler)
     if not use_sampler:
@@ -38,7 +48,7 @@ def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, e
     Internal training loop for coffeeCNN.
     Args:
         model (coffeeCNN): The model to train.
-        device: Device to use (CPU or CUDA).
+        device: Device to use (CPU, CUDA, or Intel XPU).
         train_loader: DataLoader for training data.
         criterion: Loss function.
         optimizer: Optimizer for training.

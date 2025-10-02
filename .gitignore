@@ -3,3 +3,8 @@ img/
 masked_images/
 processed_images/
 manual_levels/
+inference_output/
+coffeeCNN_finetune*
+compiled*
+heuristic*
+*.png
