@@ -99,7 +99,7 @@ class coffeeCNN(torch.nn.Module):
 
 class coffeeCNNv2(torch.nn.Module):
     def __init__(self, num_classes=11, H=480, W=320):
-        super(coffeeCNN, self).__init__()
+        super(coffeeCNNv2, self).__init__()
 
         self.conv1 = torch.nn.Conv2d(3, 32,3,padding=1)
         self.conv2 = torch.nn.Conv2d(32,64,3, padding=1)
