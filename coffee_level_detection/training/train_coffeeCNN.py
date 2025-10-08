@@ -37,13 +37,12 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     criterion = torch.nn.CrossEntropyLoss(weight=weights)  # class balancing
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     #train
-    __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
+    __train_loop(model,device,train_loader, criterion, optimizer, epochs, val_loader)
     torch.save(model.state_dict(), "coffeeCNNv2.pth")
     #eval
-    __eval_loop(model, val_loader, device)
     
     
-def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer, epochs, checkpoint):
+def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer, epochs, val_loader):
     """
     Internal training loop for coffeeCNNv2.
     Args:
@@ -73,12 +72,14 @@ def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer,
             batch_loss = loss.item()
             running_loss += batch_loss * (labels.size(0) if hasattr(labels, "size") else 1)
             batch_bar.set_postfix(loss=f"{batch_loss:.4f}")
-        if (i+1)%checkpoint == 0:
-            torch.save({
-                'model_state_dict': model.state_dict(),
-                'optimizer_state_dict': optimizer.state_dict(),
-                'epoch': epoch
-            }, "checkpoint.pth.tar")
+        # validate after epoch
+        val_loss, val_acc = __eval_loop(model, val_loader, device, criterion)
+        # save best model by validation loss
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            torch.save(model.state_dict(), "best_coffeeCNNv2.pth")
+        epoch_bar.set_postfix(train_loss=f"{avg_loss:.4f}", val_loss=f"{val_loss:.4f}", val_acc=f"{val_acc:.4f}")
+        print(f"Epoch {epoch+1}, Train Loss: {avg_loss:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.4f}")
         # compute epoch average loss and show on epoch bar
         avg_loss = running_loss / total_samples if total_samples > 0 else running_loss / max(len(train_loader), 1)
         epoch_bar.set_postfix(epoch_loss=f"{avg_loss:.4f}")
