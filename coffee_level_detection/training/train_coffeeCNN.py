@@ -74,6 +74,7 @@ def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer,
             running_loss += batch_loss * (labels.size(0) if hasattr(labels, "size") else 1)
             batch_bar.set_postfix(loss=f"{batch_loss:.4f}")
         # validate after epoch
+        avg_loss = running_loss / total_samples if total_samples > 0 else running_loss / max(len(train_loader), 1)
         val_loss, val_acc = __eval_loop(model, val_loader, device, criterion)
         # save best model by validation loss
         if val_loss < best_val_loss:
