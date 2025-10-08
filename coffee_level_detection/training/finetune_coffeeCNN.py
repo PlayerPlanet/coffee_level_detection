@@ -7,7 +7,7 @@ import argparse
 import json
 import os
 from datetime import datetime
-from coffee_level_detection.training.coffee import coffeeCNN, CoffeeImageDataset
+from coffee_level_detection.training.coffee import coffeeCNNv2, CoffeeImageDataset
 from coffee_level_detection.training.train_coffeeCNN import train, __load_dataset
 from coffee_level_detection.inference.tools import load_model
 import pandas as pd
@@ -146,7 +146,7 @@ def fine_tune_model(pretrained_path, dataset, output_path,
     
     # Load pretrained model
     print(f"Loading pretrained model from {pretrained_path}")
-    model = coffeeCNN(num_classes=num_classes).to(device)
+    model = coffeeCNNv2(num_classes=num_classes).to(device)
     
     # Add dropout for regularization
     model.dropout = torch.nn.Dropout(dropout_rate)
@@ -309,7 +309,7 @@ def main():
     parser = argparse.ArgumentParser(description='Fine-tune coffee level detection CNN')
     
     # Model paths
-    parser.add_argument('--pretrained', type=str, default='coffeeCNN.pth',
+    parser.add_argument('--pretrained', type=str, default='coffeeCNNv2.pth',
                        help='Path to pretrained model weights')
     parser.add_argument('--output', type=str, default='coffeeCNN_finetuned.pth',
                        help='Path to save fine-tuned model')
