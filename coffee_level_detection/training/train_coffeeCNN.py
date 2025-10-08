@@ -85,27 +85,33 @@ def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer,
         epoch_bar.set_postfix(epoch_loss=f"{avg_loss:.4f}")
         print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
 
-def __eval_loop(model, val_loader, device):
+def __eval_loop(model, val_loader, device, criterion):
     """
     Internal evaluation loop for coffeeCNNv2.
+    Computes validation loss and accuracy.
     Args:
         model: Trained model to evaluate.
         val_loader: DataLoader for validation data.
+        criterion: Loss function for computing validation loss.
     Returns:
-        Tuple (correct, total): Number of correct predictions and total samples.
+        Tuple (val_loss, accuracy): Average validation loss and accuracy.
     """
     model.eval()
     correct, total = 0, 0
+    running_loss = 0.0
     with torch.no_grad():
         for inputs, labels in val_loader:
             inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            running_loss += loss.item() * labels.size(0)
             _, preds = torch.max(outputs, 1)
             correct += (preds == labels).sum().item()
             total += labels.size(0)
-    print(f"correct: {correct}, total: {total}")
-    print(f"accuracy: {correct/total}")
-    return correct, total
+    val_loss = running_loss / total if total > 0 else float('nan')
+    accuracy = correct / total if total > 0 else 0.0
+    print(f"Validation - Loss: {val_loss:.4f}, Accuracy: {accuracy:.4f} ({correct}/{total})")
+    return val_loss, accuracy
 
 def __weights(y: np.ndarray, num_classes: int, device):
     """
