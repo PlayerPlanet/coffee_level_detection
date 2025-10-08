@@ -54,6 +54,7 @@ def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer,
         epochs (int): Number of epochs.
         checkpoint (int): Checkpoint interval.
     """
+    best_val_loss = float('inf')
     epoch_bar = tqdm(range(epochs), desc="Training", unit="epoch")
     for i, epoch in enumerate(epoch_bar):
         running_loss = 0.0
