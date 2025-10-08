@@ -1,15 +1,15 @@
-# Inference infrastructure for coffeeCNN
+# Inference infrastructure for coffeeCNNv2
 import torch
 import cv2
 import numpy as np
-from coffee_level_detection.training.coffee import coffeeCNN
+from coffee_level_detection.training.coffee import coffeeCNNv2
 import torchvision.transforms as T
 
-def load_model(model_path="coffeeCNN.pth", device=None):
-	"""Load trained coffeeCNN model from file."""
+def load_model(model_path="coffeeCNNv2.pth", device=None):
+	"""Load trained coffeeCNNv2 model from file."""
 	if device is None:
 		device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-	model = coffeeCNN(num_classes=11).to(device)
+	model = coffeeCNNv2(num_classes=11).to(device)
 	try:
 		# Try weights_only=True (PyTorch 2.6+ default)
 		model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -45,9 +45,9 @@ def preprocess_image(img_paths):
 
 def predict_coffee_level(model, img_tensor, device=None):
 	"""
-	Predict coffee level(s) from image tensor(s) using coffeeCNN model.
+	Predict coffee level(s) from image tensor(s) using coffeeCNNv2 model.
 	Args:
-		model: Loaded coffeeCNN model
+		model: Loaded coffeeCNNv2 model
 		img_tensor: torch.Tensor (N, C, H, W)
 		device: torch.device
 	Returns:
@@ -83,7 +83,7 @@ def infer_coffee_level(img_path, model=None, device=None):
 	End-to-end inference: preprocess image, predict coffee level using loaded model.
 	Args:
 		img_path: Path to image
-		model: Loaded coffeeCNN model
+		model: Loaded coffeeCNNv2 model
 		device: torch.device
 	Returns:
 		int: Predicted coffee level
@@ -101,7 +101,7 @@ def infer_coffee_level_batch(img_paths, model, device=None):
 	Batch inference for multiple images.
 	Args:
 		img_paths: List of image paths
-		model: Loaded coffeeCNN model
+		model: Loaded coffeeCNNv2 model
 		device: torch.device
 	Returns:
 		List[int]: Predicted coffee levels
