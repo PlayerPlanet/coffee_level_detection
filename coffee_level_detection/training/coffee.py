@@ -6,6 +6,7 @@ Provides a PyTorch Dataset for loading coffee images and labels from a DataFrame
 """
 
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
 from PIL import Image
 import torchvision.transforms as T
@@ -13,6 +14,7 @@ import os
 from torch.utils.data import Dataset
 import pandas as pd 
 import numpy as np
+import torchvision.models as models
 
 class CoffeeImageDataset(Dataset):
     """
@@ -94,3 +96,52 @@ class coffeeCNN(torch.nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
         return x
+
+class coffeeCNNv2(torch.nn.Module):
+    def __init__(self, num_classes=11, H=480, W=320):
+        super(coffeeCNN, self).__init__()
+
+        self.conv1 = torch.nn.Conv2d(3, 32,3,padding=1)
+        self.conv2 = torch.nn.Conv2d(32,64,3, padding=1)
+        self.pool = torch.nn.MaxPool2d(2,2)
+        self.global_pool = torch.nn.AdaptiveAvgPool2d((1,1))
+        self.fc1 = torch.nn.Linear(64,128)
+        self.fc2 = torch.nn.Linear(128, num_classes)
+        self.bn1   = torch.nn.BatchNorm2d(32)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.bn1(self.conv1(x))))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = self.global_pool(x)
+        x = torch.flatten(x, 1)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+class coffeeResNet(nn.Module):
+    """ResNet-based coffee level classifier.
+
+    Wraps a torchvision ResNet (default: resnet18) and replaces the final
+    fully-connected layer to output `num_classes` logits.
+
+    Args:
+        num_classes (int): Number of output classes (default 11 for levels 0-10).
+        backbone (str): Which ResNet backbone to use: 'resnet18' or 'resnet34'.
+        pretrained (bool): If True, load ImageNet pretrained weights for the backbone.
+    """
+    def __init__(self, num_classes=11, backbone='resnet18', pretrained=False):
+        super(coffeeResNet, self).__init__()
+
+        if backbone == 'resnet18':
+            self.model = models.resnet18(pretrained=pretrained)
+        elif backbone == 'resnet34':
+            self.model = models.resnet34(pretrained=pretrained)
+        else:
+            raise ValueError(f"Unsupported backbone: {backbone}")
+
+        in_features = self.model.fc.in_features
+        # Replace the final fully-connected layer with one that outputs num_classes
+        self.model.fc = nn.Linear(in_features, num_classes)
+
+    def forward(self, x):
+        """Forward pass returning raw logits (no softmax)."""
+        return self.model(x)

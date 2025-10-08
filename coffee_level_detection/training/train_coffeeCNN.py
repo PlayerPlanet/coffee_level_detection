@@ -1,5 +1,5 @@
 import torch, argparse, json
-from coffee_level_detection.training.coffee import coffeeCNN, CoffeeImageDataset
+from coffee_level_detection.training.coffee import coffeeCNNv2, CoffeeImageDataset
 from sklearn.utils.class_weight import compute_class_weight
 from tqdm import tqdm
 import numpy as np
@@ -8,7 +8,7 @@ import pandas as pd
 
 def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, checkpoint: int = 5, use_sampler=False, num_classes: int = 11):
     """
-    Train a coffeeCNN model on the provided CoffeeImageDataset.
+    Train a coffeeCNNv2 model on the provided CoffeeImageDataset.
     Args:
         dataset (CoffeeImageDataset): The dataset to train on.
         batch_size (int): Batch size for training.
@@ -28,7 +28,7 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
         device = torch.device("cpu")
         print(f"Using device: {device} (CPU)")
         
-    model = coffeeCNN(num_classes=num_classes).to(device)
+    model = coffeeCNNv2(num_classes=num_classes).to(device)
     train_loader, val_loader = __handle_dataset(dataset, 0.9, 0.1, batch_size ,use_sampler=use_sampler)
     if not use_sampler:
         weights = __weights(dataset.df['coffee_level'].values, num_classes, device)
@@ -38,16 +38,16 @@ def train(dataset: CoffeeImageDataset, batch_size: int = 1, epochs: int = 20, ch
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     #train
     __train_loop(model,device,train_loader, criterion, optimizer, epochs, checkpoint)
-    torch.save(model.state_dict(), "coffeeCNN.pth")
+    torch.save(model.state_dict(), "coffeeCNNv2.pth")
     #eval
     __eval_loop(model, val_loader, device)
     
     
-def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, epochs, checkpoint):
+def __train_loop(model: coffeeCNNv2, device, train_loader, criterion, optimizer, epochs, checkpoint):
     """
-    Internal training loop for coffeeCNN.
+    Internal training loop for coffeeCNNv2.
     Args:
-        model (coffeeCNN): The model to train.
+        model (coffeeCNNv2): The model to train.
         device: Device to use (CPU, CUDA, or Intel XPU).
         train_loader: DataLoader for training data.
         criterion: Loss function.
@@ -86,7 +86,7 @@ def __train_loop(model: coffeeCNN, device, train_loader, criterion, optimizer, e
 
 def __eval_loop(model, val_loader, device):
     """
-    Internal evaluation loop for coffeeCNN.
+    Internal evaluation loop for coffeeCNNv2.
     Args:
         model: Trained model to evaluate.
         val_loader: DataLoader for validation data.
@@ -170,7 +170,7 @@ def __load_dataset(dataset_path, img_path):
 
 def main():
     """
-    Main entry point for training coffeeCNN from command line arguments.
+    Main entry point for training coffeeCNNv2 from command line arguments.
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--f", type=str, default="compiled_coffee_level_annotations.json")
