@@ -15,6 +15,7 @@ from torch.utils.data import Dataset
 import pandas as pd 
 import numpy as np
 import torchvision.models as models
+from math import sqrt
 
 class CoffeeImageDataset(Dataset):
     """
@@ -98,25 +99,66 @@ class coffeeCNN(torch.nn.Module):
         return x
 
 class coffeeCNNv2(torch.nn.Module):
-    def __init__(self, num_classes=11, H=480, W=320):
+    """
+    Improved coffeeCNNv2:
+    - BatchNorm after each conv
+    - Optional 3rd conv for capacity
+    - AdaptiveAvgPool2d to give spatial-invariant features
+    - Dropout and Kaiming initialization for stability
+    """
+    def __init__(self, num_classes=11, H=480, W=320, dropout=0.4, pretrained_backbone=False):
         super(coffeeCNNv2, self).__init__()
 
-        self.conv1 = torch.nn.Conv2d(3, 32,3,padding=1)
-        self.conv2 = torch.nn.Conv2d(32,64,3, padding=1)
-        self.pool = torch.nn.MaxPool2d(2,2)
-        self.global_pool = torch.nn.AdaptiveAvgPool2d((1,1))
-        self.fc1 = torch.nn.Linear(64,128)
+        self.conv1 = torch.nn.Conv2d(3, 32, 3, padding=1)
+        self.bn1 = torch.nn.BatchNorm2d(32)
+
+        self.conv2 = torch.nn.Conv2d(32, 64, 3, padding=1)
+        self.bn2 = torch.nn.BatchNorm2d(64)
+
+        # optional additional conv layer to increase capacity
+        self.conv3 = torch.nn.Conv2d(64, 128, 3, padding=1)
+        self.bn3 = torch.nn.BatchNorm2d(128)
+
+        self.pool = torch.nn.MaxPool2d(2, 2)
+        self.global_pool = torch.nn.AdaptiveAvgPool2d((1, 1))
+
+        self.fc1 = torch.nn.Linear(128, 128)
+        self.dropout = torch.nn.Dropout(dropout)
         self.fc2 = torch.nn.Linear(128, num_classes)
-        self.bn1   = torch.nn.BatchNorm2d(32)
+
+        # initialize weights
+        self._init_weights()
 
     def forward(self, x):
-        x = self.pool(F.relu(self.bn1(self.conv1(x))))
-        x = self.pool(F.relu(self.conv2(x)))
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = self.pool(x)
+
+        x = F.relu(self.bn2(self.conv2(x)))
+        x = self.pool(x)
+
+        x = F.relu(self.bn3(self.conv3(x)))
+        # one more pool is optional; adaptive pool makes final size invariant
         x = self.global_pool(x)
+
         x = torch.flatten(x, 1)
-        x = F.relu(self.fc1(x))
+        x = self.dropout(F.relu(self.fc1(x)))
         x = self.fc2(x)
         return x
+    def _init_weights(self):
+        """Kaiming init for conv/linear, sensible BatchNorm init."""
+        for m in self.modules():
+            if isinstance(m, torch.nn.Conv2d):
+                torch.nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                if m.bias is not None:
+                    torch.nn.init.zeros_(m.bias)
+            elif isinstance(m, torch.nn.Linear):
+                torch.nn.init.kaiming_uniform_(m.weight, a=sqrt(5))
+                if m.bias is not None:
+                    torch.nn.init.zeros_(m.bias)
+            elif isinstance(m, torch.nn.BatchNorm2d):
+                torch.nn.init.ones_(m.weight)
+                torch.nn.init.zeros_(m.bias)
+
 class coffeeResNet(nn.Module):
     """ResNet-based coffee level classifier.
 
